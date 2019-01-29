@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      aihealue: ''
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Trivial Tietopeli
-          </a>
-        </header>
+        <h1>Trivial-tietopeli</h1>
+        <p>Valitse aihealueet aloittaaksesi.</p>
+        <form id="aihealueet">
+        <label id="kaikki">Kaikki </label> <input id="kaikki" type="checkbox" /><br />
+        <label id="maantiede">Maantiede </label> <input id="maantiede" type="checkbox" /><br />
+        <label id="historia">Historia </label> <input id="historia" type="checkbox" /><br />
+        <label id="luonto">Luonto ja tiede </label> <input type="checkbox" /><br />
+        <label id="kulttuuri">Kulttuuri </label> <input type="checkbox" /><br />
+        <label id="urheilu">Urheilu ja vapaa-aika </label> <input type="checkbox" /><br />
+        <label id="viihde">Viihde </label> <input type="checkbox" /><br />
+        </form>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
