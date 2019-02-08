@@ -2,7 +2,7 @@ import React from 'react'
 import Togglable from '../components/Togglable'
 import {Container, Button} from 'semantic-ui-react'
 
-const QuestionScreen = ({aihealue, handleClick}) => {
+const QuestionScreen = ({aihealue, handleClick, reset}) => {
     const rnd = Math.floor(Math.random() * aihealue.kysymykset.length)
     const kysymys = aihealue.kysymykset[rnd]
     const vastaus = aihealue.vastaukset[rnd]
@@ -13,7 +13,9 @@ const QuestionScreen = ({aihealue, handleClick}) => {
             <Togglable buttonLabel="Näytä vastaus">
             <p>{vastaus}</p>
             </Togglable>
+            <br/>
             <Button color="green" onClick={handleClick}>Arvo uusi</Button>
+            <Button color="blue" onClick={reset}>Valitse aihealueet uudelleen</Button>
         </div>
         </Container>
     )

@@ -181,6 +181,12 @@ class App extends React.Component {
     }
   }
 
+  reset = () => {
+    this.setState({
+      question: null
+    })
+  }
+
   render() {
     // ehdollinen renderöinti this.state.questionin arvon mukaan
     if(this.state.question === null) {
@@ -213,33 +219,35 @@ class App extends React.Component {
           <Togglable buttonLabel="Näytä vastaus">
             <p>{vastaus}</p>
           </Togglable>
+          <br/>
           <Button color="green" onClick={this.newQuestion}>Arvo uusi</Button>
+          <Button color="blue" onClick={this.reset}>Valitse aihealueet uudelleen</Button>
         </div>
         </Container>
       )
     } else if(this.state.question === "maantiede") {
       return(
-        <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} />
+        <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} />
       )
     } else if(this.state.question === "historia") {
       return(
-        <QuestionScreen aihealue={historia} handleClick={this.newQuestion} />
+        <QuestionScreen aihealue={historia} handleClick={this.newQuestion} reset={this.reset}/>
       )
     } else if(this.state.question === "luonto") {
       return(
-        <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} />
+        <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} reset={this.reset}/>
       )
     } else if(this.state.question === "kulttuuri") {
       return(
-        <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} />
+        <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} reset={this.reset}/>
       )
     } else if(this.state.question === "urheilu") {
       return(
-        <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} />
+        <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} reset={this.reset}/>
       )
     } else if(this.state.question === "viihde") {
       return(
-        <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} />
+        <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} reset={this.reset} />
       )
     }
   }
