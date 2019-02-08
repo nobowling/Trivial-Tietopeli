@@ -3,7 +3,7 @@ import HomeScreen from './components/HomeScreen'
 import QuestionScreen from './components/QuestionScreen'
 import Togglable from './components/Togglable'
 import {Container, Button} from 'semantic-ui-react'
-
+import Notification from './components/Notification'
 
 const maantiede = {
   kysymykset: [
@@ -70,7 +70,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       aihealueet: ["kaikki"],
-      question: null
+      question: null,
+      notification: false
     }
   }
   //handlerit reagoivat checkboxien nappien painalluksiin
@@ -162,7 +163,8 @@ class App extends React.Component {
     // asetetaan this.state.questionin arvo sen mukaan, mitä this.state.aihealueet sisältää
     if(this.state.aihealueet.length === 0) {
       this.setState({
-        question: null
+        question: null,
+        notification: true
       })
     }
     else if(this.state.aihealueet.includes("kaikki", 0)) {
@@ -184,7 +186,8 @@ class App extends React.Component {
   reset = () => {
     this.setState({
       aihealueet: ["kaikki"],
-      question: null
+      question: null,
+      notification: false
     })
   }
 
@@ -204,6 +207,7 @@ class App extends React.Component {
         handleViihde={this.handleViihde}
         />
         <Button color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
+        {this.state.notification === true ? <Notification notification='Valitse aihealue!' /> : null}
         </div>
         </Container>
       )
