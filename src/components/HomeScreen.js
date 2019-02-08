@@ -10,9 +10,9 @@ const HomeScreen = ({handleAll, handleMaantiede, handleHistoria, handleLuonto, h
             <Checkbox label="Kaikki" onChange={handleAll} defaultChecked toggle/><br />
             <Checkbox label="Maantiede" onChange={handleMaantiede} toggle/><br />
             <Checkbox label="Historia" onChange={handleHistoria} toggle/><br />
-            <Checkbox label="Luonto" onChange={handleLuonto} toggle/><br />
+            <Checkbox label="Luonto ja tiede" onChange={handleLuonto} toggle/><br />
             <Checkbox label="Kulttuuri" onChange={handleKulttuuri} toggle/><br />
-            <Checkbox label="Urheilu" onChange={handleUrheilu} toggle/><br />
+            <Checkbox label="Urheilu ja vapaa-aika" onChange={handleUrheilu} toggle/><br />
             <Checkbox label="Viihde" onChange={handleViihde} toggle/><br />
         </div>
     </div>
