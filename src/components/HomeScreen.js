@@ -4,8 +4,6 @@ import {Checkbox} from 'semantic-ui-react'
 const HomeScreen = ({handleAll, handleMaantiede, handleHistoria, handleLuonto, handleKulttuuri, handleUrheilu, handleViihde}) => {
     return(
     <div className="App">
-        <h1 id="triviaHeader">Trivia-tietopeli</h1>
-        <p>Valitse aihealueet aloittaaksesi.</p>
         <div id="checkboxes">
             <Checkbox label="Kaikki" onChange={handleAll} defaultChecked toggle/><br />
             <Checkbox label="Maantiede" onChange={handleMaantiede} toggle/><br />
