@@ -1,6 +1,8 @@
 import React from 'react'
 import HomeScreen from './components/HomeScreen'
+import QuestionScreen from './components/QuestionScreen'
 import Togglable from './components/Togglable'
+import {Container, Button} from 'semantic-ui-react'
 
 
 const maantiede = {
@@ -158,7 +160,12 @@ class App extends React.Component {
 
   newQuestion = () => {
     // asetetaan this.state.questionin arvo sen mukaan, mitä this.state.aihealueet sisältää
-    if(this.state.aihealueet.includes("kaikki", 0)) {
+    if(this.state.aihealueet.length === 0) {
+      this.setState({
+        question: null
+      })
+    }
+    else if(this.state.aihealueet.includes("kaikki", 0)) {
       this.setState({
         question: "kaikki"
       })
@@ -178,8 +185,9 @@ class App extends React.Component {
     // ehdollinen renderöinti this.state.questionin arvon mukaan
     if(this.state.question === null) {
       return(
+        <Container>
+        <div>
         <HomeScreen
-        handleSubmit={this.newQuestion} 
         handleAll={this.handleAll}
         handleMaantiede={this.handleMaantiede}
         handleHistoria={this.handleHistoria}
@@ -188,6 +196,9 @@ class App extends React.Component {
         handleUrheilu={this.handleUrheilu}
         handleViihde={this.handleViihde}
         />
+        <Button color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
+        </div>
+        </Container>
       )
     } else if(this.state.question === "kaikki") {
       const kysList = [maantiede, historia, luonto, kulttuuri, urheilu, viihde]
@@ -196,84 +207,39 @@ class App extends React.Component {
       const kysymys = kysList[rndAihe].kysymykset[rndKys]
       const vastaus = kysList[rndAihe].vastaukset[rndKys]
       return(
-        <div>
-          <h1>{kysymys}</h1>
+        <Container>
+        <div id="questionScreen">
+          <h1 id="questionHeader">{kysymys}</h1>
           <Togglable buttonLabel="Näytä vastaus">
-            {vastaus}
+            <p>{vastaus}</p>
           </Togglable>
+          <Button color="green" onClick={this.newQuestion}>Arvo uusi</Button>
         </div>
+        </Container>
       )
     } else if(this.state.question === "maantiede") {
-      const rnd = Math.floor(Math.random() * maantiede.kysymykset.length)
-      const kysymys = maantiede.kysymykset[rnd]
-      const vastaus = maantiede.vastaukset[rnd]
       return(
-        <div>
-          <h1>{kysymys}</h1>
-          <Togglable buttonLabel="Näytä vastaus">
-            {vastaus}
-          </Togglable>
-        </div>
+        <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} />
       )
     } else if(this.state.question === "historia") {
-      const rnd = Math.floor(Math.random() * historia.kysymykset.length)
-      const kysymys = historia.kysymykset[rnd]
-      const vastaus = historia.vastaukset[rnd]
       return(
-        <div>
-          <h1>{kysymys}</h1>
-          <Togglable buttonLabel="Näytä vastaus">
-            {vastaus}
-          </Togglable>
-        </div>
+        <QuestionScreen aihealue={historia} handleClick={this.newQuestion} />
       )
     } else if(this.state.question === "luonto") {
-      const rnd = Math.floor(Math.random() * luonto.kysymykset.length)
-      const kysymys = luonto.kysymykset[rnd]
-      const vastaus = luonto.vastaukset[rnd]
       return(
-        <div>
-          <h1>{kysymys}</h1>
-          <Togglable buttonLabel="Näytä vastaus">
-            {vastaus}
-          </Togglable>
-        </div>
+        <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} />
       )
     } else if(this.state.question === "kulttuuri") {
-      const rnd = Math.floor(Math.random() * kulttuuri.kysymykset.length)
-      const kysymys = kulttuuri.kysymykset[rnd]
-      const vastaus = kulttuuri.vastaukset[rnd]
       return(
-        <div>
-          <h1>{kysymys}</h1>
-          <Togglable buttonLabel="Näytä vastaus">
-            {vastaus}
-          </Togglable>
-        </div>
+        <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} />
       )
     } else if(this.state.question === "urheilu") {
-      const rnd = Math.floor(Math.random() * urheilu.kysymykset.length)
-      const kysymys = urheilu.kysymykset[rnd]
-      const vastaus = urheilu.vastaukset[rnd]
       return(
-        <div>
-          <h1>{kysymys}</h1>
-          <Togglable buttonLabel="Näytä vastaus">
-            {vastaus}
-          </Togglable>
-        </div>
+        <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} />
       )
     } else if(this.state.question === "viihde") {
-      const rnd = Math.floor(Math.random() * viihde.kysymykset.length)
-      const kysymys = viihde.kysymykset[rnd]
-      const vastaus = viihde.vastaukset[rnd]
       return(
-        <div>
-          <h1>{kysymys}</h1>
-          <Togglable buttonLabel="Näytä vastaus">
-            {vastaus}
-          </Togglable>
-        </div>
+        <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} />
       )
     }
   }

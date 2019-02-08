@@ -16,3 +16,34 @@ code {
 input {
   display: block;
 }
+
+#triviaHeader {
+  color: rgb(185, 148, 123);
+  font-family: Anton;
+  font-size: 70px;
+}
+
+#questionHeader {
+  font-family: Roboto;
+  font-style: italic;
+  font-size: 30px;
+}
+
+#questionScreen {
+  margin-top: 200px;
+}
+
+p {
+  font-style: italic;
+  font-family: Roboto;
+  font-size: 25px;
+}
+
+label {
+  font-family: Anton;
+  padding: 10px;
+}
+
+#checkboxes {
+  margin-bottom: 50px;
+}
