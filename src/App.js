@@ -3,17 +3,45 @@ import HomeScreen from './components/HomeScreen'
 import QuestionScreen from './components/QuestionScreen'
 import Togglable from './components/Togglable'
 import Title from './components/Title'
-import {Container, Button} from 'semantic-ui-react'
+import {Container, Button, Icon} from 'semantic-ui-react'
 import Notification from './components/Notification'
 
 const maantiede = {
   kysymykset: [
-    "Maantiede1",
-    "Maantiede2"
+    "Kuinka monta valtiota on Euroopassa (vuonna 2019)?",
+    "Mitkä ovat järjestyksessä asukasluvultaan kaksi suurinta maanosaa?",
+    "Mikä on asukasluvultaan Euroopan suurin kaupunki?",
+    "Volga on Euroopan pisin joki. Mihin vesimuodostumaan se laskee?",
+    "Mikä on pinta-alaltaan Euroopan pienin valtio?",
+    "Mikä on Liechtensteinin pääkaupunki?",
+    "Mikä on Belgian pääkaupunki?",
+    "Mikä on maailman eteläisin pääkaupunki?",
+    "Mikä rahayksikkö Tanskassa on käytössä?",
+    "Minkä valtion rahayksikkö on zloty?",
+    "Minkä Tanskan itsehallintoalueen pääkaupunki on Tórshavn?",
+    "Mikä on Norjan korkein vuori?",
+    "Mille valtiolle kuuluu Etelä-Atlantilla sijaitseva Bouvet'nsaari? BONUS: Miksi saari on maantieteellisesti erityinen?",
+    "Mikä on Suomen pisin joki? BONUS: Kuinka pitkä se on 50 kilometrin tarkkuudella?",
+    "Mikä on Suomen pinta-ala 1000 neliökilometrin tarkkuudella?",
+    "Mikä on Suomen eteläisin tunturi?"
   ],
   vastaukset: [
-    "MaantiedeVastaus1",
-    "MaantiedeVastaus2"
+    "51",
+    "Aasia ja Afrikka",
+    "Moskova",
+    "Kaspianmereen",
+    "Vatikaani",
+    "Vaduz",
+    "Bryssel",
+    "Wellington",
+    "Tanskan kruunu",
+    "Puolan",
+    "Färsaarten",
+    "Galdhopiggen",
+    "Norjalle. BONUS: Se sijaitsee kauempana mantereesta tai muista saarista kuin mikään muu saari maailmassa.",
+    "Kemijoki. BONUS: 550 kilometriä",
+    "338 000 neliökilometriä",
+    "Iso-Syöte"
   ]
 }
 
@@ -217,7 +245,9 @@ class App extends React.Component {
           handleUrheilu={this.handleUrheilu}
           handleViihde={this.handleViihde}
           />
+          <div style={genQButtonStyle}>
           <Button color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
+          </div>
           {this.state.notification === true ? <Notification notification='Valitse aihealue!'/> : null}
           </div>
           </Container>
@@ -228,46 +258,77 @@ class App extends React.Component {
         const rndKys = Math.floor(Math.random() * kysList[rndAihe].kysymykset.length)
         const kysymys = kysList[rndAihe].kysymykset[rndKys]
         const vastaus = kysList[rndAihe].vastaukset[rndKys]
+
+        let categoryName = null
+
+        switch(kysList[rndAihe]) {
+          case maantiede:
+        categoryName = <Icon color="blue" name="big world"/>
+          break;
+          case historia:
+        categoryName = <Icon color="yellow" name="big hourglass end"/>
+          break;
+          case luonto:
+        categoryName = <Icon color="green" name="big tree"/>
+          break;
+          case kulttuuri:
+        categoryName = <Icon color="brown" name="big book"/>
+          break;
+          case urheilu:
+        categoryName = <Icon color="orange" name="big soccer"/>
+          break;
+          case viihde:
+        categoryName = <Icon color="pink" name="big music"/>
+          break;
+        }
+
         return(
-          <Container>
+          <Container style={genQButtonStyle}>
           <Title/>
           <div id="questionScreen">
+            <p>{categoryName}</p>
             <h1 id="questionHeader">{kysymys}</h1>
             <Togglable buttonLabel="Näytä vastaus">
               <p id="vastausHeader">{vastaus}</p>
             </Togglable>
             <br/>
+            <div style={genQButtonStyle}>
             <Button color="green" onClick={this.newQuestion}>Arvo uusi</Button>
+            </div>
             <Button color="blue" onClick={this.reset}>Valitse aihealueet uudelleen</Button>
           </div>
           </Container>
         )
         case "maantiede":
         return(
-          <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} />
+          <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="blue" name="big world"/>}/>
         )
         case "historia":
         return(
-          <QuestionScreen aihealue={historia} handleClick={this.newQuestion} reset={this.reset}/>
+          <QuestionScreen aihealue={historia} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="yellow" name="big hourglass end"/>}/>
         )
         case "luonto":
         return(
-          <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} reset={this.reset}/>
+          <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="green" name="big tree"/>}/>
         )
         case "kulttuuri":
         return(
-          <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} reset={this.reset}/>
+          <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="brown" name="big book"/>}/>
         )
         case "urheilu":
         return(
-          <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} reset={this.reset}/>
+          <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="orange" name="big soccer"/>}/>
         )
         case "viihde":
         return(
-          <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} reset={this.reset} />
+          <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="pink" name="big music"/>}/>
         )
     }
   }
+}
+
+const genQButtonStyle = {
+  textAlign: "center"
 }
 
 export default App

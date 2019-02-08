@@ -27,6 +27,7 @@ input {
   color: rgb(185, 148, 123);
   font-family: Anton;
   font-size: 70px;
+  text-align: center;
 }
 
 @keyframes questionHeader {
@@ -51,7 +52,7 @@ input {
 }
 
 #questionScreen {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 p {
