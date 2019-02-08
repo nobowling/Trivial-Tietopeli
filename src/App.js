@@ -183,6 +183,7 @@ class App extends React.Component {
 
   reset = () => {
     this.setState({
+      aihealueet: ["kaikki"],
       question: null
     })
   }
