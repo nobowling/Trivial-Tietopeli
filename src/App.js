@@ -74,11 +74,7 @@ class App extends React.Component {
     this.state = {
       aihealueet: ["kaikki"],
       question: null,
-<<<<<<< HEAD
-      error: ""
-=======
       notification: false
->>>>>>> 9f66bb4b14f807226897ccec96676be476861f9a
     }
   }
   //handlerit reagoivat checkboxien nappien painalluksiin
@@ -171,12 +167,13 @@ class App extends React.Component {
     if(this.state.aihealueet.length === 0) {
       this.setState({
         question: null,
-<<<<<<< HEAD
-        error: "Et valinnut aihealueita"
-=======
         notification: true
->>>>>>> 9f66bb4b14f807226897ccec96676be476861f9a
       })
+      setTimeout(() => {
+        this.setState({
+          notification: false
+        })
+      }, 5000)
     }
     else if(this.state.aihealueet.includes("kaikki", 0)) {
       this.setState({
@@ -198,83 +195,77 @@ class App extends React.Component {
     this.setState({
       aihealueet: ["kaikki"],
       question: null,
-<<<<<<< HEAD
-      error: ""
-=======
       notification: false
->>>>>>> 9f66bb4b14f807226897ccec96676be476861f9a
     })
   }
 
   render() {
     // ehdollinen renderöinti this.state.questionin arvon mukaan
-    if(this.state.question === null) {
-      return(
-        <Container>
-        <div>
-        <Title />
-        <div id="error">
-          <p id="errorText">{this.state.error}</p>
-        </div>
-        <p>Valitse aihealueet aloittaaksesi.</p>
-        <HomeScreen
-        handleAll={this.handleAll}
-        handleMaantiede={this.handleMaantiede}
-        handleHistoria={this.handleHistoria}
-        handleLuonto={this.handleLuonto}
-        handleKulttuuri={this.handleKulttuuri}
-        handleUrheilu={this.handleUrheilu}
-        handleViihde={this.handleViihde}
-        />
-        <Button color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
-        {this.state.notification === true ? <Notification notification='Valitse aihealue!' /> : null}
-        </div>
-        </Container>
-      )
-    } else if(this.state.question === "kaikki") {
-      const kysList = [maantiede, historia, luonto, kulttuuri, urheilu, viihde]
-      const rndAihe = Math.floor(Math.random() * kysList.length)
-      const rndKys = Math.floor(Math.random() * kysList[rndAihe].kysymykset.length)
-      const kysymys = kysList[rndAihe].kysymykset[rndKys]
-      const vastaus = kysList[rndAihe].vastaukset[rndKys]
-      return(
-        <Container>
-        <Title/>
-        <div id="questionScreen">
-          <h1 id="questionHeader">{kysymys}</h1>
-          <Togglable buttonLabel="Näytä vastaus">
-            <p>{vastaus}</p>
-          </Togglable>
-          <br/>
-          <Button color="green" onClick={this.newQuestion}>Arvo uusi</Button>
-          <Button color="blue" onClick={this.reset}>Valitse aihealueet uudelleen</Button>
-        </div>
-        </Container>
-      )
-    } else if(this.state.question === "maantiede") {
-      return(
-        <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} check={this.check} />
-      )
-    } else if(this.state.question === "historia") {
-      return(
-        <QuestionScreen aihealue={historia} handleClick={this.newQuestion} reset={this.reset}/>
-      )
-    } else if(this.state.question === "luonto") {
-      return(
-        <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} reset={this.reset}/>
-      )
-    } else if(this.state.question === "kulttuuri") {
-      return(
-        <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} reset={this.reset}/>
-      )
-    } else if(this.state.question === "urheilu") {
-      return(
-        <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} reset={this.reset}/>
-      )
-    } else if(this.state.question === "viihde") {
-      return(
-        <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} reset={this.reset} />
-      )
+    switch(this.state.question) {
+      default:
+        return(
+          <Container>
+          <Title/>
+          <div>
+          <p>Valitse aihealueet aloittaaksesi.</p>
+          <HomeScreen
+          handleAll={this.handleAll}
+          handleMaantiede={this.handleMaantiede}
+          handleHistoria={this.handleHistoria}
+          handleLuonto={this.handleLuonto}
+          handleKulttuuri={this.handleKulttuuri}
+          handleUrheilu={this.handleUrheilu}
+          handleViihde={this.handleViihde}
+          />
+          <Button color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
+          {this.state.notification === true ? <Notification notification='Valitse aihealue!'/> : null}
+          </div>
+          </Container>
+        )
+      case "kaikki":
+        const kysList = [maantiede, historia, luonto, kulttuuri, urheilu, viihde]
+        const rndAihe = Math.floor(Math.random() * kysList.length)
+        const rndKys = Math.floor(Math.random() * kysList[rndAihe].kysymykset.length)
+        const kysymys = kysList[rndAihe].kysymykset[rndKys]
+        const vastaus = kysList[rndAihe].vastaukset[rndKys]
+        return(
+          <Container>
+          <Title/>
+          <div id="questionScreen">
+            <h1 id="questionHeader">{kysymys}</h1>
+            <Togglable buttonLabel="Näytä vastaus">
+              <p id="vastausHeader">{vastaus}</p>
+            </Togglable>
+            <br/>
+            <Button color="green" onClick={this.newQuestion}>Arvo uusi</Button>
+            <Button color="blue" onClick={this.reset}>Valitse aihealueet uudelleen</Button>
+          </div>
+          </Container>
+        )
+        case "maantiede":
+        return(
+          <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} />
+        )
+        case "historia":
+        return(
+          <QuestionScreen aihealue={historia} handleClick={this.newQuestion} reset={this.reset}/>
+        )
+        case "luonto":
+        return(
+          <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} reset={this.reset}/>
+        )
+        case "kulttuuri":
+        return(
+          <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} reset={this.reset}/>
+        )
+        case "urheilu":
+        return(
+          <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} reset={this.reset}/>
+        )
+        case "viihde":
+        return(
+          <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} reset={this.reset} />
+        )
     }
   }
 }

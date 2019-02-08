@@ -15,7 +15,7 @@ const QuestionScreen = ({aihealue, handleClick, reset}) => {
         <div id="questionScreen">
             <h1 id="questionHeader">{kysymys}</h1>
             <Togglable buttonLabel="Näytä vastaus">
-            <p>{vastaus}</p>
+            <p id="vastausHeader">{vastaus}</p>
             </Togglable>
             <br/>
             <Button color="green" onClick={handleClick}>Arvo uusi</Button>

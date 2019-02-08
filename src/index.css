@@ -29,14 +29,29 @@ input {
   font-size: 70px;
 }
 
+@keyframes questionHeader {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes vastausHeader {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
 #questionHeader {
   font-family: Roboto;
   font-style: italic;
   font-size: 30px;
+  animation: questionHeader 4s;
+}
+
+#vastausHeader {
+  animation: vastausHeader 4s;
 }
 
 #questionScreen {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 p {
@@ -52,4 +67,8 @@ label {
 
 #checkboxes {
   margin-bottom: 50px;
+}
+
+.valitseAihe {
+  color: red;
 }
