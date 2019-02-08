@@ -234,7 +234,7 @@ class App extends React.Component {
         return(
           <Container>
           <Title/>
-          <div>
+          <div style={homeScreenAlign}>
           <p>Valitse aihealueet aloittaaksesi.</p>
           <HomeScreen
           handleAll={this.handleAll}
@@ -246,7 +246,7 @@ class App extends React.Component {
           handleViihde={this.handleViihde}
           />
           <div style={genQButtonStyle}>
-          <Button color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
+          <Button size="massive" color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
           </div>
           {this.state.notification === true ? <Notification notification='Valitse aihealue!'/> : null}
           </div>
@@ -292,7 +292,7 @@ class App extends React.Component {
               <p id="vastausHeader">{vastaus}</p>
             </Togglable>
             <br/>
-            <div style={genQButtonStyle}>
+            <div>
             <Button color="green" onClick={this.newQuestion}>Arvo uusi</Button>
             </div>
             <Button color="blue" onClick={this.reset}>Valitse aihealueet uudelleen</Button>
@@ -328,7 +328,11 @@ class App extends React.Component {
 }
 
 const genQButtonStyle = {
-  textAlign: "center"
+  textAlign: "center",
+}
+
+const homeScreenAlign = {
+  textAlign: 'center'
 }
 
 export default App
