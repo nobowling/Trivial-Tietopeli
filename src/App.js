@@ -2,8 +2,9 @@ import React from 'react'
 import HomeScreen from './components/HomeScreen'
 import QuestionScreen from './components/QuestionScreen'
 import Togglable from './components/Togglable'
+import Title from './components/Title'
 import {Container, Button} from 'semantic-ui-react'
-
+import Notification from './components/Notification'
 
 const maantiede = {
   kysymykset: [
@@ -72,7 +73,12 @@ class App extends React.Component {
     super(props)
     this.state = {
       aihealueet: ["kaikki"],
-      question: null
+      question: null,
+<<<<<<< HEAD
+      error: ""
+=======
+      notification: false
+>>>>>>> 9f66bb4b14f807226897ccec96676be476861f9a
     }
   }
   //handlerit reagoivat checkboxien nappien painalluksiin
@@ -164,7 +170,12 @@ class App extends React.Component {
     // asetetaan this.state.questionin arvo sen mukaan, mitä this.state.aihealueet sisältää
     if(this.state.aihealueet.length === 0) {
       this.setState({
-        question: null
+        question: null,
+<<<<<<< HEAD
+        error: "Et valinnut aihealueita"
+=======
+        notification: true
+>>>>>>> 9f66bb4b14f807226897ccec96676be476861f9a
       })
     }
     else if(this.state.aihealueet.includes("kaikki", 0)) {
@@ -186,7 +197,12 @@ class App extends React.Component {
   reset = () => {
     this.setState({
       aihealueet: ["kaikki"],
-      question: null
+      question: null,
+<<<<<<< HEAD
+      error: ""
+=======
+      notification: false
+>>>>>>> 9f66bb4b14f807226897ccec96676be476861f9a
     })
   }
 
@@ -196,6 +212,11 @@ class App extends React.Component {
       return(
         <Container>
         <div>
+        <Title />
+        <div id="error">
+          <p id="errorText">{this.state.error}</p>
+        </div>
+        <p>Valitse aihealueet aloittaaksesi.</p>
         <HomeScreen
         handleAll={this.handleAll}
         handleMaantiede={this.handleMaantiede}
@@ -206,6 +227,7 @@ class App extends React.Component {
         handleViihde={this.handleViihde}
         />
         <Button color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
+        {this.state.notification === true ? <Notification notification='Valitse aihealue!' /> : null}
         </div>
         </Container>
       )
@@ -217,6 +239,7 @@ class App extends React.Component {
       const vastaus = kysList[rndAihe].vastaukset[rndKys]
       return(
         <Container>
+        <Title/>
         <div id="questionScreen">
           <h1 id="questionHeader">{kysymys}</h1>
           <Togglable buttonLabel="Näytä vastaus">
@@ -230,7 +253,7 @@ class App extends React.Component {
       )
     } else if(this.state.question === "maantiede") {
       return(
-        <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} />
+        <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} check={this.check} />
       )
     } else if(this.state.question === "historia") {
       return(
