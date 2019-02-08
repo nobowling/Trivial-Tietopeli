@@ -58,10 +58,12 @@ const urheilu = {
 
 const viihde = {
   kysymykset: [
-    "Mikä tv-sarja"
+    "Mikä tv-sarja",
+    "Mikä elokuva"
   ],
   vastaukset: [
-    "HIMYM"
+    "HIMYM",
+    "Pulp Fiction"
   ]
 }
 
