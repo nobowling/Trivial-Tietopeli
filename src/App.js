@@ -39,7 +39,7 @@ const luonto = {
 const kulttuuri = {
   kysymykset: [
     "Kuka taiteilija",
-    "Missä sijaitsee patsas"
+    <p>Missä sijaitsee patsas</p>
   ],
   vastaukset: [
     "Van Gogh",
