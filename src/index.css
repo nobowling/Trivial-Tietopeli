@@ -17,20 +17,42 @@ input {
   display: block;
 }
 
+#errorText {
+  color: red;
+  font-family: Roboto;
+  margin-bottom: 30px;
+}
+
 #triviaHeader {
   color: rgb(185, 148, 123);
   font-family: Anton;
   font-size: 70px;
+  text-align: center;
+}
+
+@keyframes questionHeader {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes vastausHeader {
+  0% {opacity: 0}
+  100% {opacity: 1}
 }
 
 #questionHeader {
   font-family: Roboto;
   font-style: italic;
   font-size: 30px;
+  animation: questionHeader 4s;
+}
+
+#vastausHeader {
+  animation: vastausHeader 4s;
 }
 
 #questionScreen {
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
 p {
@@ -46,4 +68,8 @@ label {
 
 #checkboxes {
   margin-bottom: 50px;
+}
+
+.valitseAihe {
+  color: red;
 }
