@@ -23,7 +23,19 @@ const maantiede = {
     "Mille valtiolle kuuluu Etelä-Atlantilla sijaitseva Bouvet'nsaari? BONUS: Miksi saari on maantieteellisesti erityinen?",
     "Mikä on Suomen pisin joki? BONUS: Kuinka pitkä se on 50 kilometrin tarkkuudella?",
     "Mikä on Suomen pinta-ala 1000 neliökilometrin tarkkuudella?",
-    "Mikä on Suomen eteläisin tunturi?"
+    "Mikä on Suomen eteläisin tunturi?",
+    "Kuinka monta prosenttia maapallon väestöstä asuu Aasiassa (tasakymmenluku)?",
+    "Mikä on asukasluvultaan selkeästi suurin Kiinan itsehallintoalue?",
+    "Kuinka monta valtiota sijaitsee Arabian niemimaalla?",
+    "Missä islaminuskon pyhin moskeija Masjid al-Haram sijaitsee?",
+    "Mikä on Kalifornian osavaltion pääkaupunki?",
+    "Mitä Yhdysvaltain lipun 13 vaakaraitaa kuvaavat?",
+    "Minä päivämääränä Yhdysvallat itsenäistyi?",
+    "Mikä on Pohjois-Amerikassa sijaitseva maailman pisin poimuvuoristo?",
+    "Mikä on asukasluvultaan Pohjois-Amerikan toiseksi suurin valtio?",
+    "Mikä on Haitin pääkaupunki?",
+    "Mikä on Hondurasin pääkaupunki?",
+    "Mikä on noin neljällä miljoonalla asukkaallaan asukasluvultaan Pohjois-Amerikan suurin epäitsenäinen valtio?"
   ],
   vastaukset: [
     "51",
@@ -33,7 +45,7 @@ const maantiede = {
     "Vatikaani",
     "Vaduz",
     "Bryssel",
-    "Wellington",
+    "Wellington, Uusi-Seelanti",
     "Tanskan kruunu",
     "Puolan",
     "Färsaarten",
@@ -41,7 +53,19 @@ const maantiede = {
     "Norjalle. BONUS: Se sijaitsee kauempana mantereesta tai muista saarista kuin mikään muu saari maailmassa.",
     "Kemijoki. BONUS: 550 kilometriä",
     "338 000 neliökilometriä",
-    "Iso-Syöte"
+    "Iso-Syöte Pudasjärvellä",
+    "60%",
+    "Guangxi (~50 000 000 as.), seuraavaksi suurin Sisä-Mongolia (~30 000 000 as.)",
+    "Seitsemän (Saudi-Arabia, Kuwait, Jemen, Oman, Yhdistyneet arabiemiirikunnat, Qatar ja Bahrain)",
+    "Mekassa, Saudi-Arabiassa",
+    "Sacramento",
+    "Alkuperäisten siirtokuntien/osavaltioiden lukumäärää",
+    "4.7.1776",
+    "Kordillieerit",
+    "Meksiko",
+    "Port-au-Prince",
+    "Tegucigalpa",
+    "Puerto Rico"
   ]
 }
 
