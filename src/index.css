@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, #8d665b, #b7b0c2);
 }
 
 code {
@@ -24,10 +25,11 @@ input {
 }
 
 #triviaHeader {
-  color: rgb(185, 148, 123);
+  color: rgb(0, 0, 0);
   font-family: Anton;
   font-size: 70px;
   text-align: center;
+  text-shadow: 2px 2px #302d2d;
 }
 
 @keyframes questionHeader {
@@ -36,6 +38,11 @@ input {
 }
 
 @keyframes vastausHeader {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes notification {
   0% {opacity: 0}
   100% {opacity: 1}
 }
@@ -49,6 +56,13 @@ input {
 
 #vastausHeader {
   animation: vastausHeader 4s;
+}
+
+#notification {
+  font-size: 40px;
+  animation: vastausHeader 4s;
+  color: rgb(102, 26, 26);
+  margin-top: 20px;
 }
 
 #questionScreen {
@@ -68,8 +82,4 @@ label {
 
 #checkboxes {
   margin-bottom: 50px;
-}
-
-.valitseAihe {
-  color: red;
 }

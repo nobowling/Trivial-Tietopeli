@@ -20,13 +20,13 @@ const HomeScreen = ({handleAll, handleMaantiede, handleHistoria, handleLuonto, h
 const checkboxStyle = {
     fontSize: "25px",
     padding: "10px",
-    border: 'solid 1px',
+    borderBottom: 'solid 1px',
     width: '330px',
     borderRadius: '5px',
     margin: '3px',
     textAlign: 'center',
     height: '50px',
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
 }
 
 const iconStyle = {

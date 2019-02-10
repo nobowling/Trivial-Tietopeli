@@ -23,7 +23,6 @@ const maantiede = {
     "Mille valtiolle kuuluu Etelä-Atlantilla sijaitseva Bouvet'nsaari? BONUS: Miksi saari on maantieteellisesti erityinen?",
     "Mikä on Suomen pisin joki? BONUS: Kuinka pitkä se on 50 kilometrin tarkkuudella?",
     "Mikä on Suomen pinta-ala 1000 neliökilometrin tarkkuudella?",
-    "Mikä on Suomen eteläisin tunturi?",
     "Kuinka monta prosenttia maapallon väestöstä asuu Aasiassa (tasakymmenluku)?",
     "Mikä on asukasluvultaan selkeästi suurin Kiinan itsehallintoalue?",
     "Kuinka monta valtiota sijaitsee Arabian niemimaalla?",
@@ -53,7 +52,6 @@ const maantiede = {
     "Norjalle. BONUS: Se sijaitsee kauempana mantereesta tai muista saarista kuin mikään muu saari maailmassa.",
     "Kemijoki. BONUS: 550 kilometriä",
     "338 000 neliökilometriä",
-    "Iso-Syöte Pudasjärvellä",
     "60%",
     "Guangxi (~50 000 000 as.), seuraavaksi suurin Sisä-Mongolia (~30 000 000 as.)",
     "Seitsemän (Saudi-Arabia, Kuwait, Jemen, Oman, Yhdistyneet arabiemiirikunnat, Qatar ja Bahrain)",
@@ -72,50 +70,61 @@ const maantiede = {
 const historia = {
   kysymykset: [
     "Millä vuosikymmenellä Martin Luther King, Jr. piti kuuluisan puheensa I have a Dream?",
-    "Historia2"
+    "Miltä vuosisadalta ensimmäiset Suomea koskevat kirjalliset lähteet ovat tiettävästi peräisin?",
+    "Minä vuonna euro korvasi markan Suomen virallisena valuuttana?",
+    "Mitkä kolme valtiota muodostivat Akselivaltojen rungon toisessa maailmansodassa?",
+    "Minkä sodan seurauksena Yhdistyneet kansakunnat (YK) perustettiin?"
   ],
   vastaukset: [
     "1960",
-    "HistoriaVastaus2"
+    "1100-luvulta",
+    "2002",
+    "Saksa, Japani ja Italia",
+    "Toisen maailmansodan"
   ]
 }
 
 const luonto = {
   kysymykset: [
-    "Mikä eläin"
+    "Mikä on Suomen suurin kansallispuisto?",
+    "Mikä on Suomen eteläisin tunturi?",
+
   ],
   vastaukset: [
-    "Koira"
+    "Lemmenjoen kansallispuisto (2 850 neliökilometriä)",
+    "Iso-Syöte, Pudasjärvellä",
   ]
 }
 
 const kulttuuri = {
   kysymykset: [
-    "Kuka taiteilija",
-    <p>Missä sijaitsee patsas</p>
+    "Mikä latinankielinen ilmaus tarkoittaa sananmukaisesti sodan aiheuttavaa tapahtumaa?",
+    "Missä sijaitsee Tate Modern -taidemuseo?"
   ],
   vastaukset: [
-    "Van Gogh",
-    "Venäjällä"
+    "Casus belli",
+    "Lontoossa"
   ]
 }
 
 const urheilu = {
   kysymykset: [
-    "Mikä olympialaji"
+    "Mikä olympialaji on kuulunut talviolympialaisten ohjelmaan vuodesta 1998 lähtien?",
+    "Kenen sanotaan juosseen Suomen maailmankartalle?"
   ],
   vastaukset: [
-    "Hiihto"
+    "Lumilautailu",
+    "Hannes Kolehmaisen"
   ]
 }
 
 const viihde = {
   kysymykset: [
-    "Mikä tv-sarja",
-    "Mikä elokuva"
+    "Missä tv-sarjassa Jason Segel esittää juristi Marshall Erikseniä?",
+    "Minkä vuonna 1994 ensi-iltansa saaneen elokuvan sanotaan elvyttäneen näyttelijä John Travoltan uran?"
   ],
   vastaukset: [
-    "HIMYM",
+    "How I Met Your Mother",
     "Pulp Fiction"
   ]
 }
@@ -137,7 +146,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
-        aihealueet: [...this.state.aihealueet, "kaikki"]
+        aihealueet: [...this.state.aihealueet, "kaikki"],
+        notification: false
       })
     }
   }
@@ -149,7 +159,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
-        aihealueet: [...this.state.aihealueet, "maantiede"]
+        aihealueet: [...this.state.aihealueet, "maantiede"],
+        notification: false
       })
     }
   }
@@ -161,7 +172,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
-        aihealueet: [...this.state.aihealueet, "historia"]
+        aihealueet: [...this.state.aihealueet, "historia"],
+        notification: false
       })
     }
   }
@@ -173,7 +185,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
-        aihealueet: [...this.state.aihealueet, "luonto"]
+        aihealueet: [...this.state.aihealueet, "luonto"],
+        notification: false
       })
     }
   }
@@ -185,7 +198,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
-        aihealueet: [...this.state.aihealueet, "kulttuuri"]
+        aihealueet: [...this.state.aihealueet, "kulttuuri"],
+        notification: false
       })
     }
   }
@@ -197,7 +211,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
-        aihealueet: [...this.state.aihealueet, "urheilu"]
+        aihealueet: [...this.state.aihealueet, "urheilu"],
+        notification: false
       })
     }
   }
@@ -209,7 +224,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
-        aihealueet: [...this.state.aihealueet, "viihde"]
+        aihealueet: [...this.state.aihealueet, "viihde"],
+        notification: false
       })
     }
   }
@@ -221,11 +237,6 @@ class App extends React.Component {
         question: null,
         notification: true
       })
-      setTimeout(() => {
-        this.setState({
-          notification: false
-        })
-      }, 5000)
     }
     else if(this.state.aihealueet.includes("kaikki", 0)) {
       this.setState({
@@ -259,7 +270,7 @@ class App extends React.Component {
           <Container>
           <Title/>
           <div style={homeScreenAlign}>
-          <p>Valitse aihealueet aloittaaksesi.</p>
+          <p><strong>Valitse aihealueet aloittaaksesi.</strong></p>
           <HomeScreen
           handleAll={this.handleAll}
           handleMaantiede={this.handleMaantiede}
@@ -270,9 +281,9 @@ class App extends React.Component {
           handleViihde={this.handleViihde}
           />
           <div style={genQButtonStyle}>
+          {this.state.notification === true ? <Notification notification='Valitse aihealue!'/> : null}
           <Button size="massive" color="green" onClick={this.newQuestion}>Arvo kysymys</Button>
           </div>
-          {this.state.notification === true ? <Notification notification='Valitse aihealue!'/> : null}
           </div>
           </Container>
         )
@@ -287,22 +298,22 @@ class App extends React.Component {
 
         switch(kysList[rndAihe]) {
           case maantiede:
-        categoryName = <Icon color="blue" name="big world"/>
+        categoryName = <Icon color="blue" name="huge world"/>
           break;
           case historia:
-        categoryName = <Icon color="yellow" name="big hourglass end"/>
+        categoryName = <Icon color="yellow" name="huge hourglass end"/>
           break;
           case luonto:
-        categoryName = <Icon color="green" name="big tree"/>
+        categoryName = <Icon color="green" name="huge tree"/>
           break;
           case kulttuuri:
-        categoryName = <Icon color="brown" name="big book"/>
+        categoryName = <Icon color="brown" name="huge book"/>
           break;
           case urheilu:
-        categoryName = <Icon color="orange" name="big soccer"/>
+        categoryName = <Icon color="orange" name="huge soccer"/>
           break;
           case viihde:
-        categoryName = <Icon color="pink" name="big music"/>
+        categoryName = <Icon color="pink" name="huge music"/>
           break;
         }
 
@@ -325,27 +336,27 @@ class App extends React.Component {
         )
         case "maantiede":
         return(
-          <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="blue" name="big world"/>}/>
+          <QuestionScreen aihealue={maantiede} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="blue" name="huge world"/>}/>
         )
         case "historia":
         return(
-          <QuestionScreen aihealue={historia} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="yellow" name="big hourglass end"/>}/>
+          <QuestionScreen aihealue={historia} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="yellow" name="huge hourglass end"/>}/>
         )
         case "luonto":
         return(
-          <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="green" name="big tree"/>}/>
+          <QuestionScreen aihealue={luonto} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="green" name="huge tree"/>}/>
         )
         case "kulttuuri":
         return(
-          <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="brown" name="big book"/>}/>
+          <QuestionScreen aihealue={kulttuuri} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="brown" name="huge book"/>}/>
         )
         case "urheilu":
         return(
-          <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="orange" name="big soccer"/>}/>
+          <QuestionScreen aihealue={urheilu} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="orange" name="huge soccer"/>}/>
         )
         case "viihde":
         return(
-          <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="pink" name="big music"/>}/>
+          <QuestionScreen aihealue={viihde} handleClick={this.newQuestion} reset={this.reset} categoryName={<Icon color="pink" name="huge music"/>}/>
         )
     }
   }

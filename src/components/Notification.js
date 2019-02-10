@@ -3,9 +3,10 @@ import React from 'react'
 const Notification = (props) => {
     return(
         <div>
-            <p>{props.notification}</p>
+            <p id="notification">{props.notification}</p>
         </div>
     )
 }
+
 
 export default Notification
